@@ -6,7 +6,7 @@
 /*   By: sujo <sujo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:12:44 by sujo              #+#    #+#             */
-/*   Updated: 2021/05/05 15:28:25 by sujo             ###   ########.fr       */
+/*   Updated: 2021/05/06 21:57:15 by sujo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	idx;
 	size_t	str_len;
 
+	if (!s)
+		return (0);
 	str_len = ft_strlen(s);
 	if (str_len < start)
 		return (ft_strdup(""));

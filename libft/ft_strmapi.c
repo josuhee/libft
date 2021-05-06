@@ -6,7 +6,7 @@
 /*   By: sujo <sujo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 18:55:19 by sujo              #+#    #+#             */
-/*   Updated: 2021/05/05 19:00:54 by sujo             ###   ########.fr       */
+/*   Updated: 2021/05/06 22:09:38 by sujo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	len;
 	unsigned int	idx;
 
+	if (!s)
+		return (0);
 	len = ft_strlen(s);
 	result = (char *)malloc(len + 1);
 	if (!result)

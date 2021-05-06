@@ -6,7 +6,7 @@
 /*   By: sujo <sujo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:06:14 by sujo              #+#    #+#             */
-/*   Updated: 2021/05/05 19:25:39 by sujo             ###   ########.fr       */
+/*   Updated: 2021/05/06 21:51:39 by sujo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
+	if (!s || fd < 0)
+		return ;
 	write(fd, s, ft_strlen(s));
 }

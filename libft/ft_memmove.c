@@ -6,7 +6,7 @@
 /*   By: sujo <sujo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 21:11:15 by sujo              #+#    #+#             */
-/*   Updated: 2021/05/05 14:34:39 by sujo             ###   ########.fr       */
+/*   Updated: 2021/05/06 21:19:38 by sujo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	unsigned char	*ptr1;
 	unsigned char	*ptr2;
 
+	if (!dst && !src)
+		return (0);
 	idx = 0;
 	ptr1 = (unsigned char *)dst;
 	ptr2 = (unsigned char *)src;

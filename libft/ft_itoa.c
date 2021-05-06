@@ -6,7 +6,7 @@
 /*   By: sujo <sujo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 16:19:10 by sujo              #+#    #+#             */
-/*   Updated: 2021/05/05 18:46:54 by sujo             ###   ########.fr       */
+/*   Updated: 2021/05/06 21:42:39 by sujo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*ft_itoa(int n)
 	result = (char *)malloc(len + minus + 1);
 	if (!result)
 		return (0);
-	result[len] = '\0';
+	result[len + minus] = '\0';
 	get_str(result, minus, len, n);
 	return (result);
 }

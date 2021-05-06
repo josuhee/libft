@@ -6,7 +6,7 @@
 /*   By: sujo <sujo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 17:59:41 by sujo              #+#    #+#             */
-/*   Updated: 2021/05/03 18:56:03 by sujo             ###   ########.fr       */
+/*   Updated: 2021/05/06 20:56:29 by sujo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char	*ptr2;
 	size_t			idx;
 
+	if (!dst && !src)
+		return (0);
 	ptr1 = (unsigned char *)dst;
 	ptr2 = (unsigned char *)src;
-	if (*ptr1 == '\0' && *ptr2 == '\0')
-		return (dst);
 	idx = 0;
 	while (idx < n)
 	{

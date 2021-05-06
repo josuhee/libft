@@ -6,7 +6,7 @@
 /*   By: sujo <sujo@student.42soul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:15:52 by sujo              #+#    #+#             */
-/*   Updated: 2021/05/05 20:29:26 by sujo             ###   ########.fr       */
+/*   Updated: 2021/05/06 23:19:53 by sujo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,42 +33,74 @@ size_t	str_size(char const *s, char c)
 	return (size);
 }
 
-void	ft_strcpy_1(char *dest, char const *from, char const *to)
+#include <stdio.h>
+
+char	*get_str(char const *s, char c)
 {
-	while (from < to)
-	{
-		*dest = *from;
-		dest++;
-		from++;
-	}
-	*dest = '\0';
+	char		*str;
+	size_t		idx;
+	size_t		len;
+
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	str = (char *)malloc(len + 1);
+	if (!str)
+		return (0);
+	idx = 0;
+	while (idx < len)
+		str[idx] = (char)s[idx];
+	str[len] = '\0';
+	return (str);
+}
+
+char	**go_free(char **str)
+{
+	size_t idx;
+
+	idx = 0;
+	while (str[idx])
+		free(str[idx]);
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char		**result;
-	char const	*ptr;
-	int			size;
 	int			idx;
 
-	size = str_size(s, c);
-	result = (char **)malloc(sizeof(char *) * (size + 1));
+	if (!s)
+		return (0);
+	result = (char **)malloc(sizeof(char *) * (str_size(s, c) + 1));
+	if (!result)
+		return (0);
 	idx = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
-			ptr = s;
-			while (*s && *s != c)
-				s++;
-			result[idx] = (char *)malloc(s - ptr + 1);
-			ft_strcpy_1(result[idx], ptr, s);
+			printf("1");
+			result[idx] = get_str(s, c);
+			if (!result[idx])
+				return (go_free(result));
+			printf("%s\n", result[idx]);
 			idx++;
 		}
 		if (!*s)
 			break ;
 		s++;
 	}
-	result[size] = 0;
+	result[idx] = 0;
 	return (result);
+}
+
+int main(){
+	char *s = "      split       this for   me  !       ";
+
+	char **result = ft_split(s, ' ');
+
+	for (int i=0;i<5;i++)
+		printf("%s\n", result[i]);
+	printf("%s\n", result[5]);
+	return 0;
 }

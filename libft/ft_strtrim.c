@@ -6,33 +6,49 @@
 /*   By: sujo <sujo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:30:20 by sujo              #+#    #+#             */
-/*   Updated: 2021/05/05 16:15:22 by sujo             ###   ########.fr       */
+/*   Updated: 2021/05/06 22:08:29 by sujo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void	ft_str_copy_1(char *dest, char const *src, size_t left, size_t right)
+{
+	size_t idx;
+
+	idx = 0;
+	while (left <= right)
+	{
+		dest[idx] = src[left];
+		left++;
+		idx++;
+	}
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t		s1_len;
-	size_t		ret_len;
+	size_t		left;
+	size_t		right;
 	char		*result;
-	char const	*ptr;
 
+	if (!s1 || !set)
+		return ((char *)s1);
 	s1_len = ft_strlen(s1);
-	ptr = s1;
-	while (ft_strchr(set, *s1) != NULL)
-		s1++;
-	if (s1 == ptr + s1_len + 1)
+	if (!*s1)
 		return (ft_strdup(""));
-	ptr += (s1_len - 1);
-	while (ft_strchr(set, *ptr) != NULL)
-		ptr--;
-	ret_len = ptr - s1 + 1;
-	result = (char *)malloc(ret_len + 1);
+	left = 0;
+	while (s1[left] && ft_strchr(set, s1[left]) != NULL)
+		left++;
+	if (left == s1_len)
+		return (ft_strdup(""));
+	right = s1_len - 1;
+	while (ft_strchr(set, s1[right]) != NULL)
+		right--;
+	result = (char *)malloc(right - left + 2);
 	if (!result)
 		return (0);
-	result = ft_memmove(result, s1, ret_len);
-	result[ret_len + 1] = '\0';
+	ft_str_copy_1(result, s1, left, right);
+	result[right - left + 1] = '\0';
 	return (result);
 }
