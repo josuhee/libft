@@ -6,7 +6,7 @@
 /*   By: sujo <sujo@student.42soul.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 19:29:45 by sujo              #+#    #+#             */
-/*   Updated: 2021/05/07 11:24:24 by sujo             ###   ########.fr       */
+/*   Updated: 2021/06/08 15:07:17 by sujo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	**go_free_split(char **str)
 
 	idx = 0;
 	while (str[idx])
-		free(str[idx]);
+		free(str[idx++]);
 	free(str);
 	return (0);
 }
